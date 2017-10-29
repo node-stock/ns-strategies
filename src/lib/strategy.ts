@@ -3,25 +3,9 @@ import { Bar, LimitOrder, EventType, TradeType, OrderType, OrderSide } from 'ns-
 
 const debug = require('debug')('strategy:sniper');
 
-export abstract class Strategy {
-  protected symbol: string;
-  protected buyOrder = {
-    eventType: EventType.Order,
-    tradeType: TradeType.Margin,
-    orderType: OrderType.Limit,
-    side: OrderSide.Buy
-  };
-  protected sellOrder = {
-    eventType: EventType.Order,
-    tradeType: TradeType.Margin,
-    orderType: OrderType.Limit,
-    side: OrderSide.Sell
-  };
-  protected dataProvider: DataProvider;
-  constructor() {
-    this.dataProvider = new DataProvider();
-  }
-  abstract execute(symbol: string, ohlcData: Bar[]): void;
+export class Strategy {
+  static dataProvider = new DataProvider();
+  static execute(symbol: string, ohlcData: Bar[]) { };
 }
 
 /** 短线阻击策略 */
@@ -31,11 +15,11 @@ export interface SniperSingal {
   side?: OrderSide
 }
 export class SniperStrategy extends Strategy {
-  constructor() {
-    super()
-  }
-  execute(symbol: string, ohlcData: Bar[]) {
+  static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = this.dataProvider.getStochastic(ohlcData);
+    if (kdList.length === 0) {
+      throw new Error(`未算出K值：${JSON.stringify(ohlcData)}`);
+    }
     const lastK = kdList[kdList.length - 1].k;
     if (!lastK) {
       throw new Error(`短线阻击策略, 获取K值异常：${lastK}`);
@@ -61,4 +45,8 @@ export class SniperStrategy extends Strategy {
     }
     return baseSingal;
   }
+  constructor() {
+    super()
+  }
+  execute() { }
 }
