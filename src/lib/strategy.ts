@@ -1,10 +1,9 @@
 import { DataProvider } from 'ns-findata';
 import { Bar, LimitOrder, EventType, TradeType, OrderType, OrderSide } from 'ns-types';
 
-const debug = require('debug')('strategy:sniper');
+const dataProvider = new DataProvider()
 
 export class Strategy {
-  static dataProvider = new DataProvider();
   static execute(symbol: string, ohlcData: Bar[]) { };
 }
 
@@ -16,7 +15,7 @@ export interface SniperSingal {
 }
 export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
-    const kdList = this.dataProvider.getStochastic(ohlcData);
+    const kdList = dataProvider.getStochastic(ohlcData);
     if (kdList.length === 0) {
       throw new Error(`未算出K值：${JSON.stringify(ohlcData)}`);
     }
