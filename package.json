@@ -1,6 +1,6 @@
 {
   "name": "ns-strategies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "node-stock strategies module",
   "repository": {
     "type": "git",
