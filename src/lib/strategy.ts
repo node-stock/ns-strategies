@@ -17,7 +17,7 @@ export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = dataProvider.getStochastic(ohlcData);
     if (kdList.length === 0) {
-      throw new Error(`未算出K值：${JSON.stringify(ohlcData)}`);
+      return null;
     }
     const lastK = kdList[kdList.length - 1].k;
     if (!lastK) {
