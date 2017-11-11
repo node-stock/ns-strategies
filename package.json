@@ -1,6 +1,6 @@
 {
   "name": "ns-strategies",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "node-stock strategies module",
   "repository": {
     "type": "git",
@@ -17,26 +17,27 @@
     "prepare": "npm run rm && tsc -p tsconfig.json"
   },
   "dependencies": {
-    "ns-findata": "0.0.15",
-    "ns-types": "0.0.2",
-    "numeral": "^2.0.6"
+    "ns-findata": "0.0.22",
+    "ns-types": "0.0.18",
+    "numeral": "^2.0.6",
+    "toml": "^2.3.3"
   },
   "devDependencies": {
-    "@types/cheerio": "0.22.2",
-    "@types/config": "0.0.32",
+    "@types/cheerio": "^0.22.5",
+    "@types/config": "0.0.33",
     "@types/lodash": "^4.14.74",
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.20",
     "@types/numeral": "0.0.22",
     "@types/power-assert": "^1.4.29",
-    "intelli-espower-loader": "^1.0.1",
-    "mocha": "^3.5.0",
-    "config": "^1.26.1",
+    "config": "^1.28.1",
     "cross-env": "^5.1.0",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^4.0.1",
     "power-assert": "^1.4.4",
+    "rimraf": "^2.6.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.6.0",
-    "typescript": "^2.4.2",
-    "rimraf": "^2.6.2"
+    "typescript": "^2.6.1"
   }
 }

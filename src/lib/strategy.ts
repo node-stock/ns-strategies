@@ -17,7 +17,7 @@ export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = dataProvider.getStochastic(ohlcData);
     if (kdList.length === 0) {
-      throw new Error(`未算出K值：${JSON.stringify(ohlcData)}`);
+      return null;
     }
     const lastK = kdList[kdList.length - 1].k;
     if (!lastK) {
@@ -33,11 +33,11 @@ export class SniperStrategy extends Strategy {
 
     const config = require('config').strategies.sniper;
     // 策略
-    if (lastK < config.buy_k) {
+    if (lastK < config.buy) {
       return <SniperSingal>Object.assign({
         side: OrderSide.Buy
       }, baseSingal);
-    } else if (lastK > config.sell_k) {
+    } else if (lastK > config.sell) {
       return <SniperSingal>Object.assign({
         side: OrderSide.Sell
       }, baseSingal);
