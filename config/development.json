@@ -1,8 +1,0 @@
-{
-  "strategies": {
-    "sniper": {
-      "sell_k": 85,
-      "buy_k": 15
-    }
-  }
-}

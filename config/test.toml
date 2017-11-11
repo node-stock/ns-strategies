@@ -1,0 +1,9 @@
+###
+### [strategies]
+###
+### 策略相关配置
+###
+[strategies]
+[strategies.sniper]
+  buy = 85
+  sell = 15

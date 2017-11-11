@@ -33,11 +33,11 @@ export class SniperStrategy extends Strategy {
 
     const config = require('config').strategies.sniper;
     // 策略
-    if (lastK < config.buy_k) {
+    if (lastK < config.buy) {
       return <SniperSingal>Object.assign({
         side: OrderSide.Buy
       }, baseSingal);
-    } else if (lastK > config.sell_k) {
+    } else if (lastK > config.sell) {
       return <SniperSingal>Object.assign({
         side: OrderSide.Sell
       }, baseSingal);
