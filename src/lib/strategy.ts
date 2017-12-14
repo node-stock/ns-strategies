@@ -21,11 +21,11 @@ export class SniperStrategy extends Strategy {
     }
     const lastK = kdList[kdList.length - 1].k;
     if (!lastK && lastK !== 0) {
-      throw new Error(`短线阻击策略, 获取K值异常：${lastK}`);
+      return null;
     }
     const price = ohlcData[ohlcData.length - 1].close;
     if (!price) {
-      throw new Error(`短线阻击策略, 当前股价异常：${price}`)
+      return null;
     }
     const baseSignal = {
       k: lastK
