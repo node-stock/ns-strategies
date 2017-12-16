@@ -23,6 +23,7 @@ export class SniperStrategy extends Strategy {
     const lastK = kdList[kdList.length - 1].k;
     if ((!lastK && lastK !== 0) || isNaN(lastK)) {
       Log.system.warn(`未计算出K值:${lastK}, 空值返回。`);
+      Log.system.warn(`kdList:${JSON.stringify(kdList, null, 2)}, 空值返回`);
       return null;
     }
     const price = ohlcData[ohlcData.length - 1].close;
