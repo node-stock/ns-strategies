@@ -17,12 +17,13 @@ export interface SniperSignal {
 export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = dataProvider.getStochastic(ohlcData);
-    Log.system.warn(`计算出的kd列表:${kdList}`);
+    Log.system.info(`计算出的kd列表:${kdList}`);
     if (kdList.length === 0) {
       return null;
     }
     const lastK = kdList[kdList.length - 1].k;
     if ((!lastK && lastK !== 0) || isNaN(lastK)) {
+      Log.system.warn(`未计算出K值:${lastK}, 空值返回。`);
       return null;
     }
     const price = ohlcData[ohlcData.length - 1].close;
