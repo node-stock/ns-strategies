@@ -17,7 +17,7 @@ export interface SniperSignal {
 export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = dataProvider.getStochastic(ohlcData);
-    Log.system.info(`计算出的kd列表:${kdList}`);
+    Log.system.info(`计算出的kd列表长度:${kdList.length}`);
     if (kdList.length === 0) {
       return null;
     }
