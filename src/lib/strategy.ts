@@ -1,4 +1,5 @@
 import { DataProvider } from 'ns-findata';
+import { Log } from 'ns-common';
 import { Bar, LimitOrder, EventType, TradeType, OrderType, OrderSide } from 'ns-types';
 
 const dataProvider = new DataProvider()
@@ -16,11 +17,12 @@ export interface SniperSignal {
 export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
     const kdList = dataProvider.getStochastic(ohlcData);
+    Log.system.warn(`计算出的kd列表:${kdList}`);
     if (kdList.length === 0) {
       return null;
     }
     const lastK = kdList[kdList.length - 1].k;
-    if (!lastK && lastK !== 0) {
+    if ((!lastK && lastK !== 0) || isNaN(lastK)) {
       return null;
     }
     const price = ohlcData[ohlcData.length - 1].close;
