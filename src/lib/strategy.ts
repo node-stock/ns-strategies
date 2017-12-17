@@ -16,14 +16,18 @@ export interface SniperSignal {
 }
 export class SniperStrategy extends Strategy {
   static execute(symbol: string, ohlcData: Bar[]) {
+    if (ohlcData[ohlcData.length - 1].volume === 0) {
+      Log.system.info(`最后一条ohlc数据量能为0:${ohlcData[ohlcData.length - 1]}, 空值返回。`);
+      return null;
+    }
     const kdList = dataProvider.getStochastic(ohlcData);
     if (kdList.length === 0) {
       return null;
     }
     const lastK = kdList[kdList.length - 1].k;
-    if ((!lastK && lastK !== 0) || isNaN(lastK)) {
+    if (!lastK && lastK !== 0) {
       Log.system.warn(`未计算出K值:${lastK}, 空值返回。`);
-      Log.system.warn(`kdList:${JSON.stringify(kdList, null, 2)}, 空值返回`);
+      Log.system.warn(`kdList:${JSON.stringify(kdList[kdList.length - 1], null, 2)}, 空值返回`);
       return null;
     }
     const price = ohlcData[ohlcData.length - 1].close;
