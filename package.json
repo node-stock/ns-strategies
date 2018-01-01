@@ -1,6 +1,6 @@
 {
   "name": "ns-strategies",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "node-stock strategies module",
   "repository": {
     "type": "git",
@@ -17,9 +17,9 @@
     "prepare": "npm run rm && tsc -p tsconfig.json"
   },
   "dependencies": {
-    "ns-common": "0.0.12",
-    "ns-findata": "0.0.31",
-    "ns-types": "0.0.38",
+    "ns-common": "0.0.14",
+    "ns-findata": "0.0.32",
+    "ns-types": "0.0.39",
     "numeral": "^2.0.6",
     "toml": "^2.3.3"
   },
