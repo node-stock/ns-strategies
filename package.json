@@ -1,6 +1,6 @@
 {
   "name": "ns-strategies",
-  "version": "0.0.30",
+  "version": "0.0.32",
   "description": "node-stock strategies module",
   "repository": {
     "type": "git",
@@ -17,14 +17,14 @@
     "prepare": "npm run rm && tsc -p tsconfig.json"
   },
   "dependencies": {
-    "ns-common": "0.0.16",
-    "ns-findata": "0.0.34",
-    "ns-types": "0.0.52",
+    "ns-common": "0.0.18",
+    "ns-findata": "0.0.38",
+    "ns-types": "0.0.62",
     "numeral": "^2.0.6",
     "toml": "^2.3.3"
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.5",
+    "@types/cheerio": "^0.22.7",
     "@types/config": "0.0.33",
     "@types/lodash": "^4.14.74",
     "@types/mocha": "^2.2.41",

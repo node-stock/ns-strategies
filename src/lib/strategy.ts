@@ -1,6 +1,6 @@
 import { DataProvider } from 'ns-findata';
 import { Log } from 'ns-common';
-import { Bar, LimitOrder, EventType, TradeType, OrderType, OrderSide } from 'ns-types';
+import { Bar, OrderType, OrderSide } from 'ns-types';
 
 const dataProvider = new DataProvider()
 
