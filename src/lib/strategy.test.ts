@@ -17,7 +17,7 @@ const testSniper = async (done: any) => {
     JSON.stringify(hisData[hisData.length - 1], null, 2),
     hisData.length
   );
-  const res = SniperStrategy.execute('6553', <Bar[]>hisData);
+  const res = SniperStrategy.execute(<Bar[]>hisData);
   console.log(res);
   done();
 }
